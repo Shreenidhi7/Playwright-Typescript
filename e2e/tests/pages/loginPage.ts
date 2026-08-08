@@ -1,4 +1,6 @@
 import { Page } from "@playwright/test";
+import 'dotenv/config'
+import { Env } from "../../utils/config/env.config";
 
 export class LoginPage {
     page: Page
@@ -7,14 +9,14 @@ export class LoginPage {
     }
 
     async visit() {
-        await this.page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+        await this.page.goto(Env.BASE_URL)
     }
 
-    async loginUser(username: string, password: string) {
+    async loginUser() {
         await this.page.getByRole("textbox", { name: "Username" }).click()
-        await this.page.getByRole("textbox", { name: "Username" }).fill(username)
+        await this.page.getByRole("textbox", { name: "Username" }).fill(Env.USERNAME)
         await this.page.getByRole("textbox", { name: "Username" }).press("Tab")
-        await this.page.getByRole("textbox", { name: "Password" }).fill(password)
+        await this.page.getByRole("textbox", { name: "Password" }).fill(Env.PASSWORD)
         await this.page.getByRole("button", { name: "Login" }).click()
     }
 
