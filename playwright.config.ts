@@ -12,6 +12,14 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+
+  // expect block - for assertions
+  expect:{
+    // timeout - we can set the timeout for assertions
+    // our assertions will wait for 10secs before getting executed
+    timeout: 10000 //10000 - 10secs
+  },
+
   testDir: './e2e/tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -25,6 +33,12 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    // timeouts
+    // no need to add these below timeout, playwright has default timeout settings
+    // but if we want to check how these timeout works, we can configure and let test cases pass/fail according to the timeouts
+    navigationTimeout: 5000, //5000 - 5sec
+    actionTimeout: 10000, //10000 - 10sec
+
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
