@@ -1,13 +1,13 @@
 import { expect, test } from "@playwright/test"
+import { LoginPage } from "../tests/pages/loginPage";
 
 test("User Login Test", async ({ page }) => {
-    await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-    await page.getByRole("textbox", { name: "Username" }).click()
-    await page.getByRole("textbox", { name: "Username" }).fill("Admin")
-    await page.getByRole("textbox", { name: "Username" }).press("Tab")
-    await page.getByRole("textbox", { name: "Password" }).fill("admin123")
-    await page.getByRole("button", { name: "Login" }).click()
-
+   
+    const loginPage = new LoginPage(page)
+    await loginPage.visit()
+    await loginPage.loginUser("Admin", "admin123")
     // Inorder to do an assertion, we need to import "expect" module form playwright/test
-    await expect(page.getByRole("heading", { name: "Dashboard" })).toHaveText("Dashboard")
+    await expect(loginPage.dashboardText).toHaveText("Dashboard")
+
+
 })
