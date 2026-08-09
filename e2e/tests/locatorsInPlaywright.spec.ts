@@ -19,10 +19,10 @@ test("Locators Strategies Test", async ({ page }) => {
     if (dashboardTextValue_getByText != dashboardTextValue_getValueUsingLocatorSelector) {
         console.log("The text retrieved from 2 different locator/selectors are different");
         page.close()
-
     } else {
         console.log("The text retrieved from 2 different locator/selectors are same");
-        await page.locator("//a[@href='/web/index.php/admin/viewAdminModule']").click()
+        const timeAtWorkTextExtract = await page.locator("//div[@class='orangehrm-dashboard-widget-name']").locator(".oxd-text.oxd-text--p").first().textContent()
+        console.log("timeAtWorkTextExtract = ", timeAtWorkTextExtract);
     }
     await page.waitForTimeout(5_000)
 })
