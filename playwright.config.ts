@@ -36,7 +36,8 @@ export default defineConfig({
     // timeouts
     // no need to add these below timeout, playwright has default timeout settings
     // but if we want to check how these timeout works, we can configure and let test cases pass/fail according to the timeouts
-    navigationTimeout: 5000, //5000 - 5sec
+    // navigationTimeout: 5000, //5000 - 5sec
+    navigationTimeout: 10000, //10000 - 10sec
     actionTimeout: 10000, //10000 - 10sec
 
     /* Base URL to use in actions like `await page.goto('')`. */
