@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { LoginPage } from "../tests/pages/loginPage";
 import { HomePage } from "./pages/homePage";
 import { AddEmployee } from "./pages/addEmployeePage";
-
+import { getRandomEmployeeDetails } from "../testData/randomFakerData";
 
 test("Add Employee Test", async ({ page }) => {
 
@@ -14,7 +14,7 @@ test("Add Employee Test", async ({ page }) => {
     await expect(loginPage.dashboardText).toHaveText("Dashboard")
     await homePage.getLeftMenuComponent.selectLeftMenuItem("PIM")
     await homePage.getTopMenuComponent.selectTopMenuItem("Add Employee")
-    await addEmployeePage.addEmployee()
+    await addEmployeePage.addEmployee(getRandomEmployeeDetails())
     await expect(addEmployeePage.getToastMessage).toHaveText("Successfully Saved")
 
 })

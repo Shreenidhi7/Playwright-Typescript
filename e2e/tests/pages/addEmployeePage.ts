@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import { EmployeeDetails } from "../../testData/dataInterface";
 
 export class AddEmployee {
 
@@ -8,14 +9,14 @@ export class AddEmployee {
         this.page = page
     }
 
-    async addEmployee() {
+    async addEmployee(EmployeeDetails:EmployeeDetails) {
         await this.page.getByRole('textbox', { name: 'First Name' }).click();
-        await this.page.getByRole('textbox', { name: 'First Name' }).fill('Shreenidhi');
+        await this.page.getByRole('textbox', { name: 'First Name' }).fill(EmployeeDetails.firstName);
         await this.page.getByRole('textbox', { name: 'First Name' }).press('Tab');
         await this.page.getByRole('textbox', { name: 'Middle Name' }).press('Tab');
-        await this.page.getByRole('textbox', { name: 'Last Name' }).fill('Sharma');
+        await this.page.getByRole('textbox', { name: 'Last Name' }).fill(EmployeeDetails.lastName);
         await this.page.getByRole('textbox').nth(4).click();
-        await this.page.getByRole('textbox').nth(4).fill('206873');
+        await this.page.getByRole('textbox').nth(4).fill(EmployeeDetails.employeeId);
         await this.page.getByRole('button', { name: 'Save' }).click();
     }
 
