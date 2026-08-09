@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@e2e/*": ["e2e/*"],
+            "@pages/*" : ["e2e/tests/pages/*"]
+        },
+        "ignoreDeprecations": "6.0",
+    }
+}
