@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
 
+test.use({
+    video: 'on' //value is overrided (in config it was mentioned as on first retry, but here we overrided with on)
+})
+
 test("Testing Wait Strategies in Playwright", async ({ page }) => {
     // Load = untill the loading/reloading stops on the application, the "load" event will pause the execution of playwright command
     // DOMCONTENTLOADED = even though the page the loaded, and if the DOM is available, then untill the DOM is available the "DOM" event will pause the execution of the playwright command

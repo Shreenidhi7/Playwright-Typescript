@@ -14,7 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 
   // expect block - for assertions
-  expect:{
+  expect: {
     // timeout - we can set the timeout for assertions
     // our assertions will wait for 10secs before getting executed
     timeout: 10000 //10000 - 10secs
@@ -45,13 +45,26 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    video: process.env.CI ? "retain-on-failure" : "off",
+    geolocation: {
+      longitude: 13.0406,
+      latitude: 77.55366
+    },
+    // timezoneId: "Asia/Bengaluru"
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        video: 'on-first-retry',
+        geolocation: {
+          longitude: 13.0406,
+          latitude: 77.55366
+        },
+      },
     },
 
     {
